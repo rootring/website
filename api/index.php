@@ -1,3 +1,18 @@
+<?php
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	if (isset($_POST["login_button"])) {
+		$_SESSION["username"] = $_POST["username"];
+		$_SESSION["password"] = $_POST["password"];
+		header("Location:login.php");
+		exit();
+	} else if (isset($_POST["register_button"])) {
+		header("Location:register.php");
+		exit();
+	}
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,21 +27,6 @@
 			login: <input type="submit" name="login_button" value="login">
 			register: <input type="submit" name="register_button" value="register">
 		</form>
-		<?php
-			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				if (isset($_POST["login_button"])) {
-					session_start();
-					echo "logged in <br>";
-					$_SESSION["username"] = $_POST["username"];
-					$_SESSION["password"] = $_POST["password"];
-					header("Location: login.php");
-					exit();
-				} else if (isset($_POST["register_button"])) {
-					header("Location: register.php");
-					exit();
-				}
-			}
-		?>
 
 		<?php include "footer.html";?>
 	</body>

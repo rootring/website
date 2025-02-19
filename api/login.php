@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,11 +11,9 @@
 	<body>
 		<?php include "header.html"; ?>
 		<?php
-
-			session_start();
 			$username = $_SESSION["username"] ?? null;
 			$password = $_SESSION["password"] ?? null;
-			
+
 			include "add_to_db.php";
 			if (check_user($username, $password)) {
 				echo "welcome back, $username";
