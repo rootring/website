@@ -1,10 +1,10 @@
 <?php
 
 function register_user($username, $email, $password) {
-	$host = "localhost";
-	$db_user = "username";
-	$db_pass = "password";
-	$db_name = "users_db";
+	$host = getenv("POSTGRES_HOST");
+	$db_user = getenv("POSTGRES_USER");
+	$db_pass = getenv("POSTGRES_PASSWORD");
+	$db_name = getenv("POSTGRES_DATABASE");
 	$registration_status = false;
 
 	$conn = new mysqli($host, $db_user, $db_pass, $db_name);
@@ -44,10 +44,10 @@ function register_user($username, $email, $password) {
 }
 
 function check_user($username, $password) {
-	$host = "localhost";
-	$db_user = "username";
-	$db_pass = "password";
-	$db_name = "users_db";
+	$host = getenv("POSTGRES_HOST");
+	$db_user = getenv("POSTGRES_USER");
+	$db_pass = getenv("POSTGRES_PASSWORD");
+	$db_name = getenv("POSTGRES_DATABASE");
 	$registration_status = false;
 
 	$conn = new mysqli($host, $db_user, $db_pass, $db_name);
